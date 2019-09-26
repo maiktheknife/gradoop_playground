@@ -16,7 +16,7 @@ import org.s1ck.ldbc.tuples.LDBCVertex;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Date;
+import java.util.*;
 
 public class LDBCToGradoopConverter {
 
@@ -42,17 +42,12 @@ public class LDBCToGradoopConverter {
 		System.out.println("EdgeCount: " + edges.count());
 
 		// transform formats
-//		DataSet<ImportVertex<Long>> importVertex =
-//				vertices.map(ldbcVertex -> new ImportVertex<Long>(ldbcVertex.f0, ldbcVertex.f1, Properties.createFromMap(ldbcVertex.getProperties())));
-
-//		DataSet<ImportEdge<Long>> importEdges =
-//				edges.map(ldbcEdge -> new ImportEdge<Long>(ldbcEdge.f0, ldbcEdge.f2, ldbcEdge.f3, ldbcEdge.f1, Properties.createFromMap(ldbcEdge.f4)));
-
 		DataSet<ImportVertex<Long>> importVertex =
 				vertices.map(new MapFunction<LDBCVertex, ImportVertex<Long>>() {
 					@Override
 					public ImportVertex<Long> map(LDBCVertex ldbcVertex) throws Exception {
-						return new ImportVertex<Long>(ldbcVertex.f0, ldbcVertex.f1, Properties.createFromMap(ldbcVertex.getProperties()));
+						Map<String, Object> cleanedProps = cleanMap(ldbcVertex.getProperties());
+						return new ImportVertex<Long>(ldbcVertex.f0, ldbcVertex.f1, Properties.createFromMap(cleanedProps));
 					}
 				});
 
@@ -60,14 +55,9 @@ public class LDBCToGradoopConverter {
 				edges.map(new MapFunction<LDBCEdge, ImportEdge<Long>>() {
 					@Override
 					public ImportEdge<Long> map(LDBCEdge ldbcEdge) throws Exception {
-						ldbcEdge.f4.keySet().forEach(key -> {
-							Object value = ldbcEdge.f4.get(key);
-							if (Date.class.equals(value.getClass())) {
-								value = convertToLocalDateTimeViaInstant((Date) value);
-							}
-							ldbcEdge.f4.put(key, value);
-						});
-						return new ImportEdge<Long>(ldbcEdge.f0, ldbcEdge.f2, ldbcEdge.f3, ldbcEdge.f1, Properties.createFromMap(ldbcEdge.f4));
+						Map<String, Object> cleanedProps = cleanMap(ldbcEdge.getProperties());
+						return new ImportEdge<Long>(ldbcEdge.getEdgeId(), ldbcEdge.getSourceVertexId(), ldbcEdge.getTargetVertexId(),
+								ldbcEdge.getLabel(), Properties.createFromMap(cleanedProps));
 					}
 				});
 
@@ -90,6 +80,24 @@ public class LDBCToGradoopConverter {
 		return dateToConvert.toInstant()
 				.atZone(ZoneId.systemDefault())
 				.toLocalDateTime();
+	}
+
+	private static Map<String, Object> cleanMap(Map<String, Object> map){
+		HashMap<String, Object> hashMap = new HashMap<>();
+		map.keySet().forEach(key -> {
+			Object value = map.get(key);
+			if (Date.class.equals(value.getClass())) {
+				value = convertToLocalDateTimeViaInstant((Date) value);
+				hashMap.put(key, value);
+			}
+
+			// TODO: this should not be necessary
+			if (ArrayList.class.equals(value.getClass())) {
+				// remove list fields
+				hashMap.remove(key);
+			}
+		});
+		return hashMap;
 	}
 
 }
