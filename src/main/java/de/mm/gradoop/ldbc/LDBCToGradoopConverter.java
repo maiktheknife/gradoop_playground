@@ -1,4 +1,4 @@
-package de.mm.ldbc_to_gradoop;
+package de.mm.gradoop.ldbc;
 
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.DataSet;

@@ -1,7 +1,11 @@
-# LDBC SNB to Gradoop Converter
+# Playground to explore Gradoop 
 
-simple java tool to convert the output of  [ldbc_snb_datagen](https://github.com/ldbc/ldbc_snb_datagen) using [ldbc-flink-import](https://github.com/s1ck/ldbc-flink-import)
+## 1) LDBC-SNB to Gradoop Converter
+simple tool to convert the output of [ldbc_snb_datagen](https://github.com/ldbc/ldbc_snb_datagen) to epgm compliant csv format
+using my [ldbc-flink-import fork](https://github.com/maiktheknife/ldbc-flink-import)
+
+## 2) example programmes
+Some example programmes to explore the Gradoop API
 
 ## DEV TODOs 
-* improve shading
-* concurrent map modification ?
+* improve shading ?

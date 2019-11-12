@@ -68,6 +68,7 @@
             <version>${dep.flink.version}</version>
         </dependency>
 
+        <!-- needs to be installed in local m2 repo, from forked repo -->
         <dependency>
             <groupId>org.s1ck</groupId>
             <artifactId>ldbc-flink-import</artifactId>
@@ -94,7 +95,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>de.mm.ldbc_to_gradoop.LDBCToGradoopConverter</mainClass>
+                            <mainClass>de.mm.gradoop.ldbc.LDBCToGradoopConverter</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
