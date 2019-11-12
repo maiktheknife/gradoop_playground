@@ -28,6 +28,9 @@ public class SamplePersonsToDot extends AbstractRunner {
 
 		DOTDataSink dotDataSink = new DOTDataSink(outputPath, true, DOTDataSink.DotFormat.HTML);
 		dotDataSink.write(outputGraph, true);
+
+		convertDotToPNG(outputPath, outputPath + ".png");
+
 		getExecutionEnvironment().execute();
 	}
 
@@ -43,14 +46,15 @@ public class SamplePersonsToDot extends AbstractRunner {
 					return transformedVertex;
 				});
 
-		return new Grouping.GroupingBuilder()
-				.setStrategy(GroupingStrategy.GROUP_REDUCE)
-				.addVertexGroupingKey("age")
-				.useVertexLabel(true)
-				.useEdgeLabel(true)
-				.addVertexAggregateFunction(new Count())
-				.addEdgeAggregateFunction(new Count())
-				.build()
-				.execute(preprocessedGraph);
+//		return new Grouping.GroupingBuilder()
+//				.setStrategy(GroupingStrategy.GROUP_REDUCE)
+//				.addVertexGroupingKey("age")
+//				.useVertexLabel(true)
+//				.useEdgeLabel(true)
+//				.addVertexAggregateFunction(new Count())
+//				.addEdgeAggregateFunction(new Count())
+//				.build()
+//				.execute(preprocessedGraph);
+		return null;
 	}
 }

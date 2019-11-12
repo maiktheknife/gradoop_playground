@@ -1,14 +1,16 @@
 package de.mm.gradoop.operators;
 
 import de.mm.gradoop.AbstractRunner;
-import org.gradoop.flink.io.impl.dot.DOTDataSink;
 import org.gradoop.flink.model.impl.epgm.LogicalGraph;
-import org.gradoop.flink.model.impl.operators.sampling.RandomVertexSampling;
-import org.gradoop.flink.model.impl.operators.sampling.SamplingAlgorithm;
+import org.gradoop.flink.model.impl.functions.epgm.ByLabel;
+import org.gradoop.flink.model.impl.operators.aggregation.functions.count.Count;
+import org.gradoop.flink.model.impl.operators.grouping.Grouping;
+import org.gradoop.flink.model.impl.operators.grouping.GroupingStrategy;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.Collections;
+
+import static java.util.Collections.singletonList;
 
 public class GroupingExp extends AbstractRunner {
 
@@ -25,19 +27,31 @@ public class GroupingExp extends AbstractRunner {
 		LogicalGraph inputGraph = readLogicalGraph(inputPath, "csv");
 
 		LogicalGraph outputGraph = execute(inputGraph);
+		//		outputGraph.print();
 
-//		writeLogicalGraph(outputGraph, outputPath, "csv");
-
-		DOTDataSink dotDataSink = new DOTDataSink(outputPath+".dot", true, DOTDataSink.DotFormat.SIMPLE);
-		dotDataSink.write(outputGraph, true);
-		getExecutionEnvironment().execute();
+		writeLogicalGraph(outputGraph, outputPath, "csv");
 	}
 
-	// group people by age
+	// calculate decade und group people by that
 	private static LogicalGraph execute(LogicalGraph socialNetwork) {
-		return socialNetwork
-				.vertexInducedSubgraph(vertex -> vertex.getLabel().equalsIgnoreCase("person"))
-				.groupBy(Collections.singletonList("age"))
-				.verify();
+		LogicalGraph preprocessedGraph = socialNetwork
+				.vertexInducedSubgraph(new ByLabel<>("person"))
+				.transformVertices((currentVertex, transformedVertex) -> {
+					int birthday = currentVertex.getPropertyValue("birthday").getDate().getYear();
+					int age = LocalDateTime.now().getYear() - birthday;
+
+					currentVertex.setProperty("age_rounded", age - (age % 10));
+					currentVertex.setProperty("decade", birthday - (birthday % 10));
+
+					return currentVertex;
+				});
+
+		return preprocessedGraph
+				.groupBy(
+						Arrays.asList(Grouping.LABEL_SYMBOL, "age_rounded", Grouping.LABEL_SYMBOL, "decade"),
+						singletonList(new Count("count")),
+						singletonList(Grouping.LABEL_SYMBOL),
+						singletonList(new Count("count")),
+						GroupingStrategy.GROUP_REDUCE);
 	}
 }

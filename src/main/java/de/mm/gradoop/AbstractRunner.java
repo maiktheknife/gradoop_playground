@@ -16,11 +16,6 @@ package de.mm.gradoop;
  * limitations under the License.
  */
 
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.gradoop.flink.io.api.DataSink;
 import org.gradoop.flink.io.api.DataSource;
@@ -38,36 +33,16 @@ import java.io.IOException;
  * Base class for benchmarks.
  */
 public abstract class AbstractRunner {
-	/**
-	 * Command line options for the runner.
-	 */
-	protected static final Options OPTIONS = new Options();
+
 	/**
 	 * Graph format used as default
 	 */
 	protected static final String DEFAULT_FORMAT = "csv";
+
 	/**
 	 * Flink execution environment.
 	 */
 	private static ExecutionEnvironment ENV;
-
-	/**
-	 * Parses the program arguments and performs sanity checks.
-	 *
-	 * @param args program arguments
-	 * @param className executing class name (for help display)
-	 * @return command line which can be used in the program
-	 * @throws ParseException on failure
-	 */
-	protected static CommandLine parseArguments(String[] args, String className)
-			throws ParseException {
-		if (args.length == 0) {
-			HelpFormatter formatter = new HelpFormatter();
-			formatter.printHelp(className, OPTIONS, true);
-			return null;
-		}
-		return new DefaultParser().parse(OPTIONS, args);
-	}
 
 	/**
 	 * Reads an EPGM database from a given directory  using a {@link CSVDataSource}.
@@ -84,7 +59,7 @@ public abstract class AbstractRunner {
 	 * Reads an EPGM database from a given directory.
 	 *
 	 * @param directory path to EPGM database
-	 * @param format format in which the graph is stored (csv, indexed)
+	 * @param format    format in which the graph is stored (csv, indexed)
 	 * @return EPGM logical graph
 	 * @throws IOException on failure
 	 */
@@ -96,7 +71,7 @@ public abstract class AbstractRunner {
 	/**
 	 * Writes a logical graph into the specified directory using a {@link CSVDataSink}.
 	 *
-	 * @param graph logical graph
+	 * @param graph     logical graph
 	 * @param directory output path
 	 * @throws Exception on failure
 	 */
@@ -107,9 +82,9 @@ public abstract class AbstractRunner {
 	/**
 	 * Writes a logical graph into a given directory.
 	 *
-	 * @param graph logical graph
+	 * @param graph     logical graph
 	 * @param directory output path
-	 * @param format output format (csv, indexed)
+	 * @param format    output format (csv, indexed)
 	 * @throws Exception on failure
 	 */
 	protected static void writeLogicalGraph(LogicalGraph graph, String directory, String format)
@@ -159,7 +134,7 @@ public abstract class AbstractRunner {
 	 * Returns an EPGM DataSource for a given directory and format.
 	 *
 	 * @param directory input path
-	 * @param format format in which the data is stored (csv, indexed)
+	 * @param format    format in which the data is stored (csv, indexed)
 	 * @return DataSource for EPGM Data
 	 */
 	private static DataSource getDataSource(String directory, String format) {
@@ -181,8 +156,8 @@ public abstract class AbstractRunner {
 	 * Returns an EPGM DataSink for a given directory and format.
 	 *
 	 * @param directory output path
-	 * @param format output format (csv, indexed)
-	 * @param config gradoop config
+	 * @param format    output format (csv, indexed)
+	 * @param config    gradoop config
 	 * @return DataSink for EPGM Data
 	 */
 	private static DataSink getDataSink(String directory, String format, GradoopFlinkConfig config) {
