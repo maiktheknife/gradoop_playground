@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fb871105-3861-49d1-b4b6-b5b18d23b047" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/mm/gradoop/operators/GroupingExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/mm/gradoop/operators/GroupingExp.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="D:\Dokumente\workspaceIJ\ldbctogradoop\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1RN8xYAWEijw5ogFz5AnEp9KgJJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../gradoop/pom.xml" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.scala.compiler.ScalaCompileServerForm" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+  </component>
+  <component name="RubyModuleManagerSettings">
+    <option name="blackListedRootsPaths">
+      <list>
+        <option value="$PROJECT_DIR$" />
+      </list>
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.LDBCToGradoopConverter - SNA">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LDBCToGradoopConverter - Graphalytics" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="de.mm.ldbc_to_gradoop.LDBCToGradoopConverter" />
+      <module name="ldbc-to-gradoop" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;C:\dev\snb\datagen_output_graphalytics_1&quot; &quot;C:\dev\snb\out&quot;" />
+      <shortenClasspath name="MANIFEST" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.mm.ldbc_to_gradoop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LDBCToGradoopConverter - SNA" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="de.mm.ldbc_to_gradoop.LDBCToGradoopConverter" />
+      <module name="ldbc-to-gradoop" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;C:\dev\snb\datagen_output_snb_interactive_1&quot; &quot;C:\dev\snb\out&quot;" />
+      <shortenClasspath name="MANIFEST" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.mm.ldbc_to_gradoop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ldbc-to-gradoop [clean,package]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="package" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.LDBCToGradoopConverter - SNA" />
+      <item itemvalue="Application.LDBCToGradoopConverter - Graphalytics" />
+      <item itemvalue="Maven.ldbc-to-gradoop [clean,package]" />
+    </list>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$/../htwplus" value="1476440705408" />
+        <entry key="$PROJECT_DIR$/../wiki_data_fetcher" value="1479325321592" />
+        <entry key="$PROJECT_DIR$/../wikiplag" value="1476537243331" />
+        <entry key="$PROJECT_DIR$/../wikiplag/analyzer" value="1484072233292" />
+        <entry key="$PROJECT_DIR$/../wikiplag/wiki" value="1464184745858" />
+        <entry key="$PROJECT_DIR$/../wikiplag/wiki_data_fetcher" value="1483565827478" />
+        <entry key="$PROJECT_DIR$/../wikiplag/wikiplag_utils" value="1479753883796" />
+        <entry key="$PROJECT_DIR$/../wikiplagggg" value="1473697231137" />
+        <entry key="$PROJECT_DIR$/../wikiplagggg - Kopie" value="1473700464057" />
+        <entry key="D:/Drive/HTW - AI/S05/WikipediaPlag/wikiplag/wiki" value="1462901344311" />
+      </map>
+    </option>
+    <option name="projectSyncType">
+      <map>
+        <entry key="D:/Drive/HTW - AI/MA/S02/Forschungsprojekt/predict/atlas-scala" value="PREVIEW" />
+        <entry key="D:/Drive/HTW - AI/MA/S02/Forschungsprojekt/predict/scala-wordcount" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Max\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fb871105-3861-49d1-b4b6-b5b18d23b047" name="Default Changelist" comment="" />
+      <created>1569496439443</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1569496439443</updated>
+      <workItem from="1569496445705" duration="4605000" />
+      <workItem from="1569501610414" duration="3560000" />
+      <workItem from="1569505427195" duration="2805000" />
+      <workItem from="1569511011512" duration="93000" />
+      <workItem from="1569512645579" duration="1736000" />
+      <workItem from="1569580624820" duration="950000" />
+      <workItem from="1572423168597" duration="50000" />
+      <workItem from="1573467551426" duration="10427000" />
+      <workItem from="1573635127103" duration="1058000" />
+    </task>
+    <task id="LOCAL-00001" summary=".">
+      <created>1569507839985</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1569507839985</updated>
+    </task>
+    <task id="LOCAL-00002" summary="* update to custom ldbc-&gt;gradoop converter fork repo&#10;* fix ArrayList handling">
+      <created>1573477992762</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1573477992762</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="." />
+    <MESSAGE value="* update to custom ldbc-&gt;gradoop converter fork repo&#10;* fix ArrayList handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="* update to custom ldbc-&gt;gradoop converter fork repo&#10;* fix ArrayList handling" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/gradoop/gradoop-common/0.5.0/gradoop-common-0.5.0.jar!/org/gradoop/common/model/impl/properties/strategies/ListStrategy.class</url>
+          <line>49</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/gradoop/gradoop-common/0.5.0/gradoop-common-0.5.0.jar!/org/gradoop/common/model/impl/properties/PropertyValue.class</url>
+          <line>210</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/gradoop/gradoop-common/0.5.0/gradoop-common-0.5.0-sources.jar!/org/gradoop/common/model/impl/properties/PropertyValue.java</url>
+          <line>491</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/gradoop/gradoop-common/0.5.0/gradoop-common-0.5.0-sources.jar!/org/gradoop/common/model/impl/properties/strategies/ListStrategy.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/gradoop/gradoop-common/0.5.1/gradoop-common-0.5.1.jar!/org/gradoop/common/model/impl/properties/PropertyValue.class</url>
+          <line>209</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
