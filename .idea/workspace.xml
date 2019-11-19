@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb871105-3861-49d1-b4b6-b5b18d23b047" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="fb871105-3861-49d1-b4b6-b5b18d23b047" name="Default Changelist" comment="* update to custom ldbc-&gt;gradoop converter fork repo&#10;* fix ArrayList handling">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/mm/gradoop/operators/GroupingExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/mm/gradoop/operators/GroupingExp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/mm/gradoop/operators/SamplePersonsToDot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/mm/gradoop/operators/SamplePersonsToDot.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,17 +82,61 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.LDBCToGradoopConverter - SNA">
+  <component name="RunManager" selected="Maven.ldbc-to-gradoop [clean,package]">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LDBCToGradoopConverter - Graphalytics" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="de.mm.ldbc_to_gradoop.LDBCToGradoopConverter" />
-      <module name="ldbc-to-gradoop" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;C:\dev\snb\datagen_output_graphalytics_1&quot; &quot;C:\dev\snb\out&quot;" />
+    <configuration name="AddAgePropertyTransformation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.mm.gradoop.operators.AddAgePropertyTransformation" />
+      <module name="gradoop-playground" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;C:\dev\_gradoop_snb_1&quot; &quot;C:\dev\_gradoop_out\transformation&quot; " />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.mm.gradoop.operators.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AddAvgToGraphheadAggregation" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.mm.gradoop.operators.AddAvgToGraphheadAggregation" />
+      <module name="gradoop-playground" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;C:\dev\_gradoop_out\transformation&quot; &quot;C:\dev\_gradoop_out\aggregation&quot;" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GroupingExp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.mm.gradoop.operators.GroupingExp" />
+      <module name="gradoop-playground" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;C:\dev\_gradoop_out\transformation&quot; &quot;C:\dev\_gradoop_out\grouping&quot; " />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.mm.gradoop.operators.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LDBCToGradoopConverter - SNA" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="de.mm.gradoop.ldbc.LDBCToGradoopConverter" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;C:\dev\snb\datagen_output_snb_interactive_1&quot; &quot;C:\dev\_gradoop_snb_1&quot;" />
       <shortenClasspath name="MANIFEST" />
       <extension name="coverage">
         <pattern>
@@ -103,14 +148,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LDBCToGradoopConverter - SNA" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="de.mm.ldbc_to_gradoop.LDBCToGradoopConverter" />
-      <module name="ldbc-to-gradoop" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;C:\dev\snb\datagen_output_snb_interactive_1&quot; &quot;C:\dev\snb\out&quot;" />
-      <shortenClasspath name="MANIFEST" />
+    <configuration name="MostUsedLanguagesByCountReduction" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.mm.gradoop.operators.MostUsedLanguagesByCountReduction" />
+      <module name="gradoop-playground" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;C:\dev\_gradoop_out\transformation&quot;" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="de.mm.ldbc_to_gradoop.*" />
+          <option name="PATTERN" value="de.mm.gradoop.operators.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MostUsedLanguagesReduction" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.mm.gradoop.operators.MostUsedLanguagesReduction" />
+      <module name="gradoop-playground" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;C:\dev\_gradoop_out\transformation&quot;" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.mm.gradoop.operators.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -166,20 +224,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file enabled="true" id="idea.log" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.LDBCToGradoopConverter - SNA" />
-      <item itemvalue="Application.LDBCToGradoopConverter - Graphalytics" />
+      <item itemvalue="Application.AddAvgToGraphheadAggregation" />
+      <item itemvalue="Application.AddAgePropertyTransformation" />
+      <item itemvalue="Application.MostUsedLanguagesReduction" />
+      <item itemvalue="Application.MostUsedLanguagesByCountReduction" />
+      <item itemvalue="Application.GroupingExp" />
       <item itemvalue="Maven.ldbc-to-gradoop [clean,package]" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GroupingExp" />
+        <item itemvalue="Application.AddAgePropertyTransformation" />
+        <item itemvalue="Application.MostUsedLanguagesByCountReduction" />
+        <item itemvalue="Application.MostUsedLanguagesReduction" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
     <option name="modificationStamps">
@@ -222,6 +283,7 @@
       <workItem from="1572423168597" duration="50000" />
       <workItem from="1573467551426" duration="10427000" />
       <workItem from="1573635127103" duration="1058000" />
+      <workItem from="1574165690926" duration="1124000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1569507839985</created>

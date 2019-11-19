@@ -27,7 +27,7 @@ public class GroupingExp extends AbstractRunner {
 		LogicalGraph inputGraph = readLogicalGraph(inputPath, "csv");
 
 		LogicalGraph outputGraph = execute(inputGraph);
-		//		outputGraph.print();
+		outputGraph.print();
 
 		writeLogicalGraph(outputGraph, outputPath, "csv");
 	}

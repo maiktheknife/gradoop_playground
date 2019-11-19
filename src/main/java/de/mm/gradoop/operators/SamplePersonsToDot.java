@@ -45,6 +45,7 @@ public class SamplePersonsToDot extends AbstractRunner {
 									.getYear());
 					return transformedVertex;
 				});
+		return preprocessedGraph;
 
 //		return new Grouping.GroupingBuilder()
 //				.setStrategy(GroupingStrategy.GROUP_REDUCE)
@@ -55,6 +56,5 @@ public class SamplePersonsToDot extends AbstractRunner {
 //				.addEdgeAggregateFunction(new Count())
 //				.build()
 //				.execute(preprocessedGraph);
-		return null;
 	}
 }
