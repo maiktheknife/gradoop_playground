@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb871105-3861-49d1-b4b6-b5b18d23b047" name="Default Changelist" comment="* update to custom ldbc-&gt;gradoop converter fork repo&#10;* fix ArrayList handling">
+    <list default="true" id="fb871105-3861-49d1-b4b6-b5b18d23b047" name="Default Changelist" comment="add idea runconfigs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/mm/gradoop/operators/GroupingExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/mm/gradoop/operators/GroupingExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/mm/gradoop/operators/SamplePersonsToDot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/mm/gradoop/operators/SamplePersonsToDot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/mm/gradoop/ldbc/LDBCToGradoopConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/mm/gradoop/ldbc/LDBCToGradoopConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/mm/gradoop/operators/AddAgePropertyTransformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/mm/gradoop/operators/AddAgePropertyTransformation.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,9 +58,9 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.25837743" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.scala.compiler.ScalaCompileServerForm" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
@@ -82,7 +83,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.ldbc-to-gradoop [clean,package]">
+  <component name="RunManager" selected="Application.AddAgePropertyTransformation">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -101,7 +102,7 @@
     <configuration name="AddAgePropertyTransformation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.mm.gradoop.operators.AddAgePropertyTransformation" />
       <module name="gradoop-playground" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;C:\dev\_gradoop_snb_1&quot; &quot;C:\dev\_gradoop_out\transformation&quot; " />
+      <option name="PROGRAM_PARAMETERS" value="--in &quot;C:\dev\_gradoop_snb_1&quot; --out &quot;C:\dev\_gradoop_out\transformation&quot; " />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="de.mm.gradoop.operators.*" />
@@ -235,8 +236,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GroupingExp" />
         <item itemvalue="Application.AddAgePropertyTransformation" />
+        <item itemvalue="Application.GroupingExp" />
         <item itemvalue="Application.MostUsedLanguagesByCountReduction" />
         <item itemvalue="Application.MostUsedLanguagesReduction" />
       </list>
@@ -283,7 +284,11 @@
       <workItem from="1572423168597" duration="50000" />
       <workItem from="1573467551426" duration="10427000" />
       <workItem from="1573635127103" duration="1058000" />
-      <workItem from="1574165690926" duration="1124000" />
+      <workItem from="1574165690926" duration="2083000" />
+      <workItem from="1574250658251" duration="272000" />
+      <workItem from="1574251293405" duration="908000" />
+      <workItem from="1574252355579" duration="828000" />
+      <workItem from="1574253424307" duration="1821000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1569507839985</created>
@@ -299,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573477992762</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add idea runconfigs">
+      <created>1574166977516</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574166977517</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,7 +333,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="." />
     <MESSAGE value="* update to custom ldbc-&gt;gradoop converter fork repo&#10;* fix ArrayList handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="* update to custom ldbc-&gt;gradoop converter fork repo&#10;* fix ArrayList handling" />
+    <MESSAGE value="add idea runconfigs" />
+    <option name="LAST_COMMIT_MESSAGE" value="add idea runconfigs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

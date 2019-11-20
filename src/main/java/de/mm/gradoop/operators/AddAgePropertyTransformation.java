@@ -1,7 +1,8 @@
 package de.mm.gradoop.operators;
 
 import de.mm.gradoop.AbstractRunner;
-import org.gradoop.flink.io.impl.dot.DOTDataSink;
+import org.apache.flink.api.java.ExecutionEnvironment;
+import org.apache.flink.api.java.utils.ParameterTool;
 import org.gradoop.flink.model.impl.epgm.LogicalGraph;
 
 import java.time.LocalDateTime;
@@ -10,13 +11,11 @@ public class AddAgePropertyTransformation extends AbstractRunner {
 
 	public static void main(String[] args) throws Exception {
 
-		if (args.length != 2) {
-			System.err.println("Usage: <inputPath> <outputPath>");
-			return;
-		}
+		ParameterTool parameterTool = ParameterTool.fromArgs(args);
+		ExecutionEnvironment.getExecutionEnvironment().getConfig().setGlobalJobParameters(parameterTool);
 
-		String inputPath = args[0];
-		String outputPath = args[1];
+		String inputPath = parameterTool.get("in");
+		String outputPath = parameterTool.get("out");
 
 		LogicalGraph inputGraph = readLogicalGraph(inputPath, "csv");
 
@@ -24,9 +23,9 @@ public class AddAgePropertyTransformation extends AbstractRunner {
 
 		writeLogicalGraph(outputGraph, outputPath, "csv");
 
-//		DOTDataSink dotDataSink = new DOTDataSink(outputPath+"_simple", true, DOTDataSink.DotFormat.SIMPLE);
-//		dotDataSink.write(outputGraph, true);
-//		getExecutionEnvironment().execute();
+		//		DOTDataSink dotDataSink = new DOTDataSink(outputPath+"_simple", true, DOTDataSink.DotFormat.SIMPLE);
+		//		dotDataSink.write(outputGraph, true);
+		//		getExecutionEnvironment().execute();
 
 		// Convert dot to png via graphviz
 		// $ dot -Tpng filename.dot -o filename.png
@@ -35,10 +34,10 @@ public class AddAgePropertyTransformation extends AbstractRunner {
 	// add 'age' field to persons based on current date
 	private static LogicalGraph execute(LogicalGraph socialNetwork) {
 		return socialNetwork
-				.vertexInducedSubgraph(epgmVertex -> epgmVertex.getLabel().equalsIgnoreCase("person"))
+				// .vertexInducedSubgraph(epgmVertex -> epgmVertex.getLabel().equalsIgnoreCase("person"))
 				.transformVertices(
 						(current, transformed) -> {
-//							if (current.getLabel().equalsIgnoreCase("person")) {
+							if (current.getLabel().equalsIgnoreCase("person")) {
 								transformed.setLabel(current.getLabel());
 								transformed.setProperties(current.getProperties());
 								transformed.setProperty(
@@ -46,8 +45,8 @@ public class AddAgePropertyTransformation extends AbstractRunner {
 										LocalDateTime.now().getYear() - current.getPropertyValue("birthday").getDate()
 												.getYear());
 								return transformed;
-//							}
-//							return current;
+							}
+							return current;
 						}
 				);
 	}

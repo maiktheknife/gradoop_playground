@@ -1,6 +1,7 @@
 package de.mm.gradoop.ldbc;
 
 import org.apache.flink.api.common.functions.MapFunction;
+import org.apache.flink.api.common.typeinfo.TypeHint;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.gradoop.common.model.impl.properties.Properties;
@@ -15,15 +16,18 @@ import org.s1ck.ldbc.LDBCToFlink;
 import org.s1ck.ldbc.tuples.LDBCEdge;
 import org.s1ck.ldbc.tuples.LDBCVertex;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class LDBCToGradoopConverter {
 
-//		Das liest die ldbc generierten csv files ein und erzeugt LDBCVertices und LDBCEdges.
-//		Wenn du die erzeugt hast, kannst du via GraphDataSource von Gradoop ImportVertices und ImportEdges erzeugen und den fertigen EPGM Graph erstellen lassen.
-//		Den fertigen EPGMGraph schreibst du dann am besten via CSVSink erstmal weg.
+	//		Das liest die ldbc generierten csv files ein und erzeugt LDBCVertices und LDBCEdges.
+	//		Wenn du die erzeugt hast, kannst du via GraphDataSource von Gradoop ImportVertices und ImportEdges erzeugen und den fertigen EPGM Graph erstellen lassen.
+	//		Den fertigen EPGMGraph schreibst du dann am besten via CSVSink erstmal weg.
 
 	private static Set<String> dataTypes = new HashSet<>();
 
@@ -40,37 +44,36 @@ public class LDBCToGradoopConverter {
 		DataSet<LDBCVertex> vertices = ldbcToFlink.getVertices();
 		DataSet<LDBCEdge> edges = ldbcToFlink.getEdges();
 
-//		System.out.println("#### Input ####");
-//		System.out.println("VertexCount: " + vertices.count());
-//		System.out.println("EdgeCount: " + edges.count());
+		//		System.out.println("#### Input ####");
+		//		System.out.println("VertexCount: " + vertices.count());
+		//		System.out.println("EdgeCount: " + edges.count());
 
 		// transform formats
 		DataSet<ImportVertex<Long>> importVertex =
-				vertices.map(new MapFunction<LDBCVertex, ImportVertex<Long>>() {
-					@Override
-					public ImportVertex<Long> map(LDBCVertex ldbcVertex) throws Exception {
-						Map<String, Object> cleanedProps = cleanMap(ldbcVertex.getProperties());
-						return new ImportVertex<Long>(ldbcVertex.f0, ldbcVertex.f1, Properties.createFromMap(cleanedProps));
-					}
+				vertices.map((MapFunction<LDBCVertex, ImportVertex<Long>>) ldbcVertex -> {
+					Map<String, Object> cleanedProps = cleanMap(ldbcVertex.getProperties());
+					return new ImportVertex<Long>(ldbcVertex.f0, ldbcVertex.f1, Properties.createFromMap(cleanedProps));
+				}).returns(new TypeHint<ImportVertex<Long>>() {
+					// NOOP
 				});
 
 		DataSet<ImportEdge<Long>> importEdges =
-				edges.map(new MapFunction<LDBCEdge, ImportEdge<Long>>() {
-					@Override
-					public ImportEdge<Long> map(LDBCEdge ldbcEdge) throws Exception {
-						Map<String, Object> cleanedProps = cleanMap(ldbcEdge.getProperties());
-						return new ImportEdge<Long>(ldbcEdge.getEdgeId(), ldbcEdge.getSourceVertexId(), ldbcEdge.getTargetVertexId(),
-								ldbcEdge.getLabel(), Properties.createFromMap(cleanedProps));
-					}
+				edges.map((MapFunction<LDBCEdge, ImportEdge<Long>>) ldbcEdge -> {
+					Map<String, Object> cleanedProps = cleanMap(ldbcEdge.getProperties());
+					return new ImportEdge<Long>(ldbcEdge.getEdgeId(), ldbcEdge.getSourceVertexId(),
+							ldbcEdge.getTargetVertexId(),
+							ldbcEdge.getLabel(), Properties.createFromMap(cleanedProps));
+				}).returns(new TypeHint<ImportEdge<Long>>() {
+
 				});
 
 		// create graph from input
 		GraphDataSource<Long> dataSource = new GraphDataSource<>(importVertex, importEdges, config);
 		LogicalGraph logicalGraph = dataSource.getLogicalGraph();
 
-//		System.out.println("#### Output ####");
-//		System.out.println("VertexCount: " + logicalGraph.getVertices().count());
-//		System.out.println("EdgeCount: " + logicalGraph.getEdges().count());
+		//		System.out.println("#### Output ####");
+		//		System.out.println("VertexCount: " + logicalGraph.getVertices().count());
+		//		System.out.println("EdgeCount: " + logicalGraph.getEdges().count());
 
 		// write graph as csv
 		CSVDataSink csvDataSink = new CSVDataSink(outputPath, logicalGraph.getConfig());
@@ -84,30 +87,21 @@ public class LDBCToGradoopConverter {
 		}
 	}
 
-	private static LocalDateTime convertToLocalDateTimeViaInstant(Date dateToConvert) {
-		return dateToConvert.toInstant()
-				.atZone(ZoneId.systemDefault())
-				.toLocalDateTime();
-	}
-
 	private static Map<String, Object> cleanMap(Map<String, Object> map) {
 		HashMap<String, Object> hashMap = new HashMap<>(map);
 		map.keySet().forEach(key -> {
 			Object value = map.get(key);
 
-			// Convert values contained in ArrayLists to PropertyValues to avoid TransformationBug in Junghans ldbc-flink-import
-			if (ArrayList.class.equals(value.getClass())) {
-				ArrayList arrayList = (ArrayList) value;
-				LinkedList ll = new LinkedList<>();
-				arrayList.forEach(o -> ll.add(PropertyValue.create(o)));
-				hashMap.put(key, ll);
+			// Convert values contained in Lists to PropertyValues to avoid TransformationBug in Junghans ldbc-flink-import
+			if (value instanceof List) {
+				List<?> arrayList = (List) value;
+				hashMap.put(key, arrayList.stream().map(PropertyValue::create).collect(Collectors.toList()));
 			}
 
 			dataTypes.add(value.getClass().getName());
 		});
 		return hashMap;
 	}
-
 
 }
 
