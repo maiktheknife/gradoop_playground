@@ -40,9 +40,9 @@ public class WordCount {
 	public static final class Tokenizer implements FlatMapFunction<String, Tuple2<String, Integer>> {
 
 		@Override
-		public void flatMap(String value, Collector<Tuple2<String, Integer>> out) {
+		public void flatMap(String row, Collector<Tuple2<String, Integer>> out) {
 			// normalize and split the line
-			String[] tokens = value.toLowerCase().split("\\W+");
+			String[] tokens = row.toLowerCase().split("\\W+");
 
 			// emit the pairs
 			for (String token : tokens) {
