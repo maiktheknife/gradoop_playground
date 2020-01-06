@@ -7,6 +7,7 @@ import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.operators.DataSource;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.utils.ParameterTool;
+import org.apache.flink.core.fs.FileSystem;
 import org.apache.flink.util.Collector;
 
 import java.util.concurrent.TimeUnit;
@@ -33,7 +34,7 @@ public class WordCount {
 						.groupBy(0)
 						.sum(1);
 
-		counts.writeAsText(outputPath);
+		counts.writeAsText(outputPath, FileSystem.WriteMode.OVERWRITE);
 
 		// execute program
 		JobExecutionResult jobResult = env.execute("WordCount");
@@ -43,9 +44,9 @@ public class WordCount {
 	public static final class Tokenizer implements FlatMapFunction<String, Tuple2<String, Integer>> {
 
 		@Override
-		public void flatMap(String value, Collector<Tuple2<String, Integer>> out) {
+		public void flatMap(String row, Collector<Tuple2<String, Integer>> out) {
 			// normalize and split the line
-			String[] tokens = value.toLowerCase().split("\\W+");
+			String[] tokens = row.toLowerCase().split("\\W+");
 
 			// emit the pairs
 			for (String token : tokens) {
