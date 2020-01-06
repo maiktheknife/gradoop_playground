@@ -1,5 +1,6 @@
 package de.mm.gradoop.flink;
 
+import org.apache.flink.api.common.JobExecutionResult;
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
@@ -7,6 +8,8 @@ import org.apache.flink.api.java.operators.DataSource;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.util.Collector;
+
+import java.util.concurrent.TimeUnit;
 
 public class WordCount {
 
@@ -33,7 +36,8 @@ public class WordCount {
 		counts.writeAsText(outputPath);
 
 		// execute program
-		env.execute("WordCount");
+		JobExecutionResult jobResult = env.execute("WordCount");
+		System.out.println("The job took " + jobResult.getNetRuntime(TimeUnit.SECONDS) + " to execute");
 	}
 
 	public static final class Tokenizer implements FlatMapFunction<String, Tuple2<String, Integer>> {
