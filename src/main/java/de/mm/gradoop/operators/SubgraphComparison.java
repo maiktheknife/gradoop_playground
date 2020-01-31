@@ -14,37 +14,32 @@ public class SubgraphComparison extends AbstractRunner {
 		ExecutionEnvironment.getExecutionEnvironment().getConfig().setGlobalJobParameters(parameterTool);
 
 		String inputPath = parameterTool.get("in");
-		String outputPath = parameterTool.get("out");
 
 		LogicalGraph inputGraph = readLogicalGraph(inputPath, "csv");
-		LogicalGraph outputGraph = execute(inputGraph);
-
-		writeLogicalGraph(outputGraph, outputPath, "csv");
+		execute(inputGraph);
 	}
 
-	private static LogicalGraph execute(LogicalGraph socialNetwork) throws Exception {
+	private static void execute(LogicalGraph socialNetwork) throws Exception {
 		// 2199023266220|Chris|Jasani|female|1981-05-22|2010-03-29T22:50:40.375+0000|41.89.103.231|Firefox
-		LogicalGraph sub1 = socialNetwork
+		LogicalGraph personKnows = socialNetwork
 				.subgraph(
 						vertex -> vertex.getLabel().equalsIgnoreCase("person"),
-						edge -> edge.getLabel().equalsIgnoreCase("knows"))
-				.sample(new RandomVertexNeighborhoodSampling(0.01f, Neighborhood.BOTH));
-//				.callForGraph(new GellyLabelPropagation(4, "person"));
+						edge -> edge.getLabel().equalsIgnoreCase("knows"));
 
-		LogicalGraph sub2 = socialNetwork
-				.subgraph(
-						vertex -> vertex.getLabel().equalsIgnoreCase("person"),
-						edge -> edge.getLabel().equalsIgnoreCase("knows"))
-				.sample(new RandomVertexNeighborhoodSampling(0.01f, Neighborhood.BOTH));
+		LogicalGraph sub1 = personKnows
+				.sample(new RandomVertexNeighborhoodSampling(0.001f, Neighborhood.IN));
+
+		LogicalGraph sub2 = personKnows
+				.sample(new RandomVertexNeighborhoodSampling(0.001f, Neighborhood.IN));
 
 		sub1.equalsByElementIds(sub2)
 				.collect()
 				.forEach(aBoolean ->
-						System.out.print("equalsByData: " + aBoolean)
+						System.out.println("equalsByElementIds: " + aBoolean)
 				);
 
-		System.out.println("#Persons=" + sub1.getVertices().count());
-		return sub1;
+		System.out.println("Sub1 #Persons=" + sub1.getVertices().count());
+		System.out.println("Sub2 #Persons=" + sub2.getVertices().count());
 	}
 
 }
