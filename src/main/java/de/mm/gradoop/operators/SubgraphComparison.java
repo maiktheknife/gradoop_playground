@@ -40,8 +40,10 @@ public class SubgraphComparison extends AbstractRunner {
 		sub1.equalsByElementIds(sub2)
 				.collect()
 				.forEach(aBoolean ->
-						System.out.print("equalsByData: " + aBoolean));
+						System.out.print("equalsByData: " + aBoolean)
+				);
 
+		System.out.println("#Persons=" + sub1.getVertices().count());
 		return sub1;
 	}
 
