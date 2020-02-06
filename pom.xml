@@ -81,7 +81,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>de.mm.gradoop.ldbc.LDBCToGradoopConverter</mainClass>
+                            <mainClass>de.mm.gradoop.operators.SubgraphComparison</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
